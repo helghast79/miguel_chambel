@@ -5,11 +5,15 @@ import Aura from '@primeuix/themes/aura'
 import 'primeicons/primeicons.css'
 import './style.css'
 import App from './App.vue'
+import primevueKeyRaw from '../primevue.key?raw'
+
+const primevueKey = primevueKeyRaw.trim()
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(PrimeVue, {
+  license: primevueKey,
   theme: {
     preset: Aura,
     options: {
