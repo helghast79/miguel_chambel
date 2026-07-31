@@ -11,6 +11,7 @@ export const useProjectsStore = defineStore('projects', {
         tags: ['Medical Imaging', 'AI/ML', 'Consortium'],
         icon: 'pi pi-heart-fill',
         gradient: 'gradient-2',
+        link: 'https://www.procancer-i.eu/',
       },
       {
         title: 'Bounce',
@@ -20,6 +21,7 @@ export const useProjectsStore = defineStore('projects', {
         tags: ['Medical Imaging', 'Predictive Models', 'Research'],
         icon: 'pi pi-chart-line',
         gradient: 'gradient-1',
+        link: 'https://www.bounce-project.eu/',
       },
       {
         title: 'ReStage',
@@ -29,6 +31,7 @@ export const useProjectsStore = defineStore('projects', {
         tags: ['Research', 'Data Curation', 'PACS'],
         icon: 'pi pi-database',
         gradient: 'gradient-3',
+        link: 'https://re-stage.eu/',
       },
       {
         title: 'PACS Infrastructure',

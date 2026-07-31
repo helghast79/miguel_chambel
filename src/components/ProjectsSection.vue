@@ -33,6 +33,17 @@ const projects = useProjectsStore()
                 {{ tag }}
               </span>
             </div>
+
+            <a
+              v-if="project.link"
+              :href="project.link"
+              target="_blank"
+              rel="noopener"
+              class="project-link"
+            >
+              Visit Project
+              <i class="pi pi-external-link"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -138,5 +149,30 @@ const projects = useProjectsStore()
   background: rgba(99, 102, 241, 0.08);
   color: var(--text-secondary);
   border: 1px solid var(--border);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-1);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--accent-glow);
+    color: white;
+  }
 }
 </style>
