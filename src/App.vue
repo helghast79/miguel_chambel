@@ -6,6 +6,7 @@ import AboutSection from '@/components/AboutSection.vue'
 import ExperienceSection from '@/components/ExperienceSection.vue'
 import SkillsSection from '@/components/SkillsSection.vue'
 import ProjectsSection from '@/components/ProjectsSection.vue'
+import PortfolioSection from '@/components/PortfolioSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
 import TheFooter from '@/components/TheFooter.vue'
 
@@ -21,6 +22,7 @@ useScrollReveal()
       <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />
+      <PortfolioSection />
       <ContactSection />
     </main>
     <TheFooter />
