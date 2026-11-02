@@ -54,6 +54,16 @@ export const usePortfolioStore = defineStore('portfolio', {
         tags: ['Vue', 'Medical Imaging', 'Medical image viewer', 'annotation tools'],
         year: '2026',
       },
+      {
+        title: 'CCIG',
+        type: 'website',
+        description:
+          'Group website for the Computational Clinical Imaging Group at Champalimaud Foundation — research, people, projects, and publications spanning radiomics, deep learning, and clinical AI across six cancer sites.',
+        image: '/portfolio/ccig.webp',
+        url: 'https://ccig-champalimaud.pt/',
+        tags: ['Vue', 'Medical Imaging', 'Research Group', 'Champalimaud'],
+        year: '2026',
+      },
 
       // {
       //   title: 'Another Project',
