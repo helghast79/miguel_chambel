@@ -44,6 +44,17 @@ export const usePortfolioStore = defineStore('portfolio', {
         tags: ['Vue', 'Medical Imaging', 'EU Research', 'Patient Tools'],
         year: '2025',
       },
+      {
+        title: 'RadMark',
+        type: 'website',
+        description:
+          'Collaborative radiology web app where clinicians annotate medical findings with bounding boxes on curated study sets — a focused viewer built for multi-site segmentation and image-analysis workflows.',
+        image: '/portfolio/radmark.webp',
+        url: 'https://radmark.web.app/',
+        tags: ['Vue', 'Medical Imaging', 'Medical image viewer', 'annotation tools'],
+        year: '2026',
+      },
+
       // {
       //   title: 'Another Project',
       //   type: 'app',
