@@ -89,6 +89,8 @@ onUnmounted(() => {
 }
 
 .nav-logo {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -97,12 +99,14 @@ onUnmounted(() => {
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   border: 2px solid var(--accent);
+  transform-origin: top left;
 
   &:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 40%, transparent);
+    z-index: 10;
+    transform: scale(2);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 45%, transparent);
   }
 }
 
