@@ -1,5 +1,6 @@
 <script setup>
 import { useProfileStore } from '@/stores/profile'
+import MatrixRain from '@/components/MatrixRain.vue'
 
 const profile = useProfileStore()
 </script>
@@ -11,6 +12,7 @@ const profile = useProfileStore()
       <div class="orb orb-2"></div>
       <div class="orb orb-3"></div>
       <div class="grid-overlay"></div>
+      <MatrixRain :opacity="0.5" />
     </div>
 
     <div class="container hero-content">
@@ -124,7 +126,7 @@ const profile = useProfileStore()
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-greeting {
