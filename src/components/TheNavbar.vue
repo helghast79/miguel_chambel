@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import meAvatar from '@/assets/me_avatar.webp'
 
 const scrolled = ref(false)
 const mobileMenuOpen = ref(false)
@@ -33,10 +34,8 @@ onUnmounted(() => {
 <template>
   <nav class="navbar" :class="{ scrolled: scrolled }">
     <div class="nav-container">
-      <a href="#home" class="nav-logo" @click="closeMobileMenu">
-        <span class="logo-bracket">&lt;</span>
-        <span class="logo-text">MC</span>
-        <span class="logo-bracket">/&gt;</span>
+      <a href="#home" class="nav-logo" @click="closeMobileMenu" aria-label="Home">
+        <img :src="meAvatar" alt="Miguel" class="nav-avatar" />
       </a>
 
       <button class="mobile-toggle" @click="mobileMenuOpen = !mobileMenuOpen">
@@ -90,21 +89,28 @@ onUnmounted(() => {
 }
 
 .nav-logo {
-  font-family: var(--mono);
-  font-size: 1.3rem;
-  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 2px;
   text-decoration: none;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid var(--accent);
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
 }
 
-.logo-bracket {
-  color: var(--accent);
-}
-
-.logo-text {
-  color: var(--text-primary);
+.nav-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .nav-links {
