@@ -35,14 +35,13 @@ export const usePortfolioStore = defineStore('portfolio', {
     items: [
       // ── Replace / extend these entries with your real work ──────────────
       {
-        title: 'Personal Homepage',
+        title: 'ReSTAGE',
         type: 'website',
         description:
-          'This site — a Vue portfolio with a matrix rain hero, scroll reveals, and Pinia-driven content sections.',
-        image: null,
-        url: null,
-        github: 'https://github.com/helghast79',
-        tags: ['Vue', 'Vite', 'Pinia'],
+          'Patient-facing web platform for an EU research consortium on rectal cancer care — project info, consortium, news, and educational resources supporting integrative decision-making with advanced MRI imaging and predictive models.',
+        image: '/portfolio/restage.webp',
+        url: 'https://re-stage.eu/',
+        tags: ['Vue', 'Medical Imaging', 'EU Research', 'Patient Tools'],
         year: '2025',
       },
       // {
