@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import meAvatar from '@/assets/me_avatar.webp'
 
 const scrolled = ref(false)
@@ -23,23 +23,50 @@ function closeMobileMenu() {
   mobileMenuOpen.value = false
 }
 
+function toggleMobileMenu() {
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+function handleKeydown(event) {
+  if (event.key === 'Escape') closeMobileMenu()
+}
+
+watch(mobileMenuOpen, (open) => {
+  document.body.style.overflow = open ? 'hidden' : ''
+})
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('keydown', handleKeydown)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('keydown', handleKeydown)
+  document.body.style.overflow = ''
 })
 </script>
 
 <template>
   <nav class="navbar" :class="{ scrolled: scrolled }">
+    <div
+      v-if="mobileMenuOpen"
+      class="nav-backdrop"
+      aria-hidden="true"
+      @click="closeMobileMenu"
+    ></div>
+
     <div class="nav-container">
       <a href="#home" class="nav-logo" @click="closeMobileMenu" aria-label="Home">
         <img :src="meAvatar" alt="Miguel" class="nav-avatar" />
       </a>
 
-      <button class="mobile-toggle" @click="mobileMenuOpen = !mobileMenuOpen">
+      <button
+        class="mobile-toggle"
+        :aria-expanded="mobileMenuOpen"
+        :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
+        @click="toggleMobileMenu"
+      >
         <i :class="mobileMenuOpen ? 'pi pi-times' : 'pi pi-bars'"></i>
       </button>
 
@@ -53,6 +80,7 @@ onUnmounted(() => {
             target="_blank"
             rel="noopener"
             class="nav-github"
+            @click="closeMobileMenu"
           >
             <i class="pi pi-github"></i>
           </a>
@@ -78,6 +106,10 @@ onUnmounted(() => {
   background: rgba(10, 14, 26, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+}
+
+.nav-backdrop {
+  display: none;
 }
 
 .nav-container {
@@ -163,19 +195,33 @@ onUnmounted(() => {
   color: var(--text-primary);
   font-size: 1.5rem;
   cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
+  position: relative;
+  z-index: 1002;
+  padding: 4px;
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(10, 14, 26, 0.55);
+    backdrop-filter: blur(2px);
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 250px;
+    width: min(280px, 85vw);
     height: 100vh;
+    height: 100dvh;
     background: var(--bg-secondary);
     flex-direction: column;
     justify-content: center;
@@ -183,6 +229,8 @@ onUnmounted(() => {
     gap: 24px;
     transition: right 0.3s ease;
     border-left: 1px solid var(--border);
+    z-index: 1001;
+    margin: 0;
 
     &.open {
       right: 0;
